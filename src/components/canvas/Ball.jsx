@@ -1,5 +1,5 @@
-import React, { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
+import React, { Suspense, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
 import {
   Decal,
   Float,
@@ -12,10 +12,19 @@ import CanvasLoader from "../Loader";
 
 const Ball = (props) => {
   const [decal] = useTexture([props.imgUrl]);
+  // const meshRef = useRef();
+  // useFrame(() => {
+  //   // Accede a la referencia de la malla y realiza la rotación deseada
+  //   if (meshRef.current) {
+  //     meshRef.current.rotation.x += 0.01; // Cambia el valor para ajustar la velocidad y dirección de la rotación
+  //     meshRef.current.rotation.y += 0.01; // Cambia el valor para ajustar la velocidad y dirección de la rotación
+  //   }
+  // });
   return (
     <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
       <ambientLight intensity={0.25} />
       <directionalLight position={[0, 0, 0.05]} />
+      {/* ref={meshRef} */}
       <mesh castShadow receiveShadow scale={2.75}>
         <icosahedronGeometry args={[1, 1]} />
         <meshStandardMaterial
