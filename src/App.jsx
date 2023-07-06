@@ -1,4 +1,5 @@
 import { BrowserRouter } from "react-router-dom";
+import { isMobile } from "react-device-detect";
 
 import {
   About,
@@ -22,12 +23,12 @@ function App() {
         </div>
         <About />
         <Experience />
-        {/* <Tech /> */}
+        {isMobile ? "" : <Tech />}
         <Works />
         <Feedbacks />
         <div className="relative z-0">
           <Contact />
-          {/* <StarsCanvas /> */}
+          {isMobile ? "" : <StarsCanvas />}
         </div>
       </div>
     </BrowserRouter>
