@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, lazy } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { isMobile } from "react-device-detect";
@@ -8,6 +8,7 @@ import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 
+const LazyEarthModel = lazy(() => import("./canvas/Earth"));
 const Contact = () => {
   const [form, setForm] = useState({
     name: "",
@@ -127,7 +128,12 @@ const Contact = () => {
         </form>
       </motion.div>
       {isMobile ? (
-        ""
+        <motion.div
+          variants={slideIn("right", "tween", 0.2, 1)}
+          className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
+        >
+          <LazyEarthModel />
+        </motion.div>
       ) : (
         <motion.div
           variants={slideIn("right", "tween", 0.2, 1)}
