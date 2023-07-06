@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { styles } from "../styles";
-// import { ComputersCanvas } from "./canvas";
+import { ComputersCanvas } from "./canvas";
 import { EarthCanvas } from "./canvas";
+import { isMobile } from "react-device-detect";
 
 const Hero = () => {
   return (
@@ -24,7 +25,7 @@ const Hero = () => {
           </p>
         </div>
       </div>
-      <EarthCanvas />
+      {isMobile ? <ComputersCanvas /> : <EarthCanvas />}
 
       <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
         <a href="#about">
